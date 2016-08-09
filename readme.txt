@@ -13,7 +13,7 @@ IntroViewController Class
 
 - In initialization call createIntroTopView and createIntroBottomView
 - Create createIntroTopView method (private
-    - View the width of the screen and (PERCENTAGE) height.
+    - View the width of the screen and (percentage based on spec) height.
     - Place app_image_line in a uiimageview and align to bottom of view
     - add a uiscrollview to the top of the view the width of the screen and the height of the view minus the height of the bottom line image.  This scrollview should be owned by a property.
     - Font is UIFont.introFont and the text color is black
@@ -23,7 +23,7 @@ IntroViewController Class
         - The third should be at x of two times the view’s width and say “I need you to help me pick a costume so that I can run to the liquor store without anyone recognizing me."
         - Put these strings into an array corresponding to the button array below and layout by enumerating through array and adding labels.
 - Create createIntroBottomView method (private)
-    - One Button the width of the screen and (percentage) height.
+    - One Button the width of the screen and (percentage based on spec) height.
     - Background color is #E15926
     - Font is UIFont.introButtonFont and the titleColor is white
     - Create array of strings called introButtonTitles containing [“Say \”hello\””, “Tell me more”, “OK”] as well as set the value of a property currentIntroPage set to zero.
@@ -49,7 +49,7 @@ IntroViewController Class
 DisguiseSceneViewController Class
 
 - class inherets from SKScene
-- in initMethod popular array with fixture data from config.plist
+- in initMethod populate array with fixture data from config.plist
 - Add Scotch as a SpriteNode scaled to the size of the launch image
 - Create updateDataMethod that is public
     - This method will update the data array that is filled with fixtureData
@@ -110,14 +110,14 @@ Transition from screenshot (viewDidAppear):
     - Move the top uiimageview off of the top of the screen
     - Move the bottom uiimageview off of the bottom of the screen
     - Scale the “app_image_o" till it is off screen
-    - Scale the “scotch" uiimageview to 100 percent
+    - Call disguiseSceneView’s scaleScotchTo method with .Intro
     - on completion: remove top, bottom and "app_image_o" uiimageviews from superview call intoViewController’s  animateIn method
 
 Transition to mainscreen:
 
 - In the introCompleted method (conforming to introViewController’s delegate)
     - Call animateOut on introViewController
-    - Scale down scotch to (? percent)
+    - Call disguiseSceneView’s scaleScotchTo method with .Main
     - Call the disguiseSceneViewController animateInMethod
 
 Disguise selection/deselection:
@@ -151,3 +151,6 @@ Miscellaneous Tasks
     - UIFont.introButtonFont = HelveticaNeue-Bold - 16pt
     - UIFont.titleFont = HelveticaNeue-Bold - 34pt
     - UIFont.subTitleFont = HelveticaNeue-Bold - 16pt
+
+Notes:
+     I’m relatively new to SKNode’s physic bodies so I’m sure there is a better way to do the spinning circle and spring animations using functionality included in that library.  Optionally we could also use less delegation and put everything in the scene.
