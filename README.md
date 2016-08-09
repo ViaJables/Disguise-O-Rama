@@ -1,6 +1,6 @@
-Disguise-O-Rama Spec:
+# Disguise-O-Rama Spec:
 
-Splash Screen
+## Splash Screen
 
 - Layout via app_image_disguise, app_image_owithscotch, app_image_rama
     - Layout in launchscreen.xib via 3 uiimageviews
@@ -9,7 +9,7 @@ Splash Screen
     - align the top of “app_image_rama" to the bottom of the “owithscotch" plus 10.
     - align the bottom of “app_iamge_disguise" to the top of “app_image_rama" plus 50
 
-IntroViewController Class
+## IntroViewController Class
 
 - In initialization call createIntroTopView and createIntroBottomView
 - Create createIntroTopView method (private
@@ -46,7 +46,7 @@ IntroViewController Class
         - animate out the topIntroView so the bottom is at zero
         - animate out the bottomIntroView so the top is at the height of the screen.
 
-DisguiseSceneViewController Class
+## DisguiseSceneViewController Class
 
 - class inherets from SKScene
 - in initMethod populate array with fixture data from config.plist
@@ -92,7 +92,7 @@ DisguiseSceneViewController Class
 - Create applyMotion method
     - This method takes the current velocity, decays it and simply calls animateToAngle with no spring after it updates the current angle.
 
-DisguiseMainViewController Class (Primary ViewController class)
+## DisguiseMainViewController Class (Primary ViewController class)
 
 Setup
 
@@ -142,7 +142,7 @@ API Consumption
 - Download and cache each server image
 - call updateData method on disguiseSceneView with this dictionary
 
-Miscellaneous Tasks
+## Miscellaneous Tasks
 
 - Load assets into project
 - Add config.plist to project for predefined costumes
@@ -152,5 +152,5 @@ Miscellaneous Tasks
     - UIFont.titleFont = HelveticaNeue-Bold - 34pt
     - UIFont.subTitleFont = HelveticaNeue-Bold - 16pt
 
-Notes:
+## Notes:
      I’m relatively new to SKNode’s physic bodies so I’m sure there is a better way to do the spinning circle and spring animations using functionality included in that library.  Optionally we could also use less delegation and put everything in the scene.
